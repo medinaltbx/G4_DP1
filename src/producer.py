@@ -96,9 +96,3 @@ while True:
         print(f"Unexpected {err}, {type(err)}")
         break
 
-
-for j in range(9999):
-    print("Iteration", j)
-    data = {'counter': j}
-    producer.send('topic_test', value=data)
-    sleep(0.5)
