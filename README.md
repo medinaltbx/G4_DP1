@@ -1,5 +1,19 @@
 # G4_DP1
-*G4 DP1 API para Metaverso*
+### Forma de uso del proyecto:
+
+
+1. Desde la consola, dirígete a la carpeta donde quieras clonar el repositorio y descárgalo 
+```console
+git clone https://github.com/Enriquebadenas/G4_DP1.git
+```
+2. Dirígete a la ruta donde se encuentre kafka-zookp-docker y ejecuta
+```
+docker-compose -f docker-compose-expose.yml up
+```
+Si todo ha ido bien, deberás ver un output similar a este:
+![img_1.png](imgs/img_1.png)
+#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~
+
 
 Informar usuarios
 Coordenadas GPS en tiempo real de usuarios
