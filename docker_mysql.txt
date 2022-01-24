@@ -1,0 +1,8 @@
+docker pull mysql
+
+docker run --name mysqldb -p 3306:3306 -e MYSQL_ROOT_PASSWORD=metaverso -d mysql
+
+CREATE USER 'cristian' IDENTIFIED BY 'metaverso';
+GRANT ALL PRIVILEGES ON *.* TO 'cristian'@'localhost' IDENTIFIED BY 'metaverso';
+
+CREATE TABLE raw_data (userId INT NOT NULL AUTO_INCREMENT PRIMARY KEY, firstName VARCHAR(20), lastName VARCHAR(20));
