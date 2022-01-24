@@ -86,11 +86,7 @@ while True:
             break
         else:
             users_generated=generate_step()
-            # Place your code here
-            # print(users_generated)
-            # exit(0)
-            producer.send('topic_test', value=users_generated)
-            # End Place for code
+            producer.send('generator', value=users_generated)
             time.sleep(2)
     except Exception as err:
         print(f"Unexpected {err}, {type(err)}")
