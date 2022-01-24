@@ -1,4 +1,4 @@
-pip install Faker
+# pip install Faker
 
 import pandas as pd
 import folium
@@ -56,5 +56,41 @@ i in range (0,USERS_TOTAL):
 map = folium.Map(location=[df.lat.mean(), df.lon.mean()], zoom_start=14, control_scale=True)
 for index, df_info in df.iterrows():
     folium.Marker([df_info["lat"], df_info["lon"]], popup=df_info["name"]).add_to(map)
+
+map
+
+# Incluir logo Find Me in Meta en el mapa
+# Guardar logo en formato png
+# Bounds = donde situar el logo, sustituir por las coordenadas de la esquina a escoger
+map_image_overlay = folium.Map([latitud, longitud], zoom_start=14, control_scale=True)
+img_overlay = folium.raster_layers.ImageOverlay(name='logo Grupo', image='logo_grupo.png', bounds=[[lat_min, lon_min], [lat_max, lon_max]], opacity=0.5, zindex=1)
+
+# add image to map
+img_overlay.add_to(map_img_overlay)
+
+# display map
+map_image_overlay
+
+
+# Charts in Pop-Up
+# si OK, mover import al principio
+# dataset.head() para ver nombres columnas
+import altair
+altair.renderers.enable('notebook')
+my_cols = pd.DataFrame({'Matchs_state': ['Match', 'No match'], 'Counter': ['nombre_columna_match', 'nombre_columna_nomatch']})
+my_graph_bar = altair.Chart(my_cols, width=300).mark_bar().encode(x='Matchs_state', y='Counter'.properties(title='Match & No-match Counter'))
+my_graph_bar
+
+# folium.features.Vegalite creates a Vega-Lite chart element
+vega = folium.features.VegaLite(my_graph_bar, width='100%', height='100%')
+
+# create Popup
+my_popup = folium.Popup()
+
+# add chart to pop-up
+vega.add_to(my_popup)
+
+# add popup to map
+my_popup.add_to(map)
 
 map
