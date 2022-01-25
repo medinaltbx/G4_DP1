@@ -23,22 +23,10 @@ Si no funciona, copiad la ruta **absoluta** de requirements, en mi caso:
 pip install r'C:\Users\Cristian\Documents\repos\G4_DP1\requirements.txt'
 ```
 4. A continuación se pueden ejecutar los scripts de producer.py y consumer.py de la carpeta src
-#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~
 
 
-Informar usuarios
-Coordenadas GPS en tiempo real de usuarios
 
-Necesario:
-Base de datos de usuarios
-Definir campos en base de datos
-Definir qué base de datos usaremos
-Opción menú para decidir qué tipo de interacción quieres?
-Tomar algo
-Pasear
-Running
-Radio de acción para los avisos
-Big Query + Data Studio para los dashboards y reporting??
+
 
 ¿Hacer match de las coordenadas GPS aleatorias que generará el generador de datos con los usuarios?
 ¿El generador proporciona los datos de los usuarios y sus coordenadas? ¿Qué proporciona el generador de datos?
