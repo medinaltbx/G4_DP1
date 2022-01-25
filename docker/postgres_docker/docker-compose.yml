@@ -1,30 +1,18 @@
-version: '3'
-
-# Run as
-# docker-compose build; docker-compose up -d
-# Check with
-# docker ps
-# Then check the logs with
-# docker logs --tail 50 $container_id
-# docker-compose images
-# docker-compose logs --tail 20 repo_name
-
+version: '3.7'
 services:
-
-  postgres_db:
-    image: postgres:11.1
-    environment:   # Set up postgres database name and password
-      POSTGRES_PASSWORD: password
-      POSTGRES_DB: bookstore
-      POSTGRES_USER: root
-    ports:    # Set up ports exposed for other containers to connect to
-      - 5433:5432
-    networks:
-      - app-tier
-    volumes:
-      - ./postgres:/docker-entrypoint-initdb.d
-
-
-networks:
-  app-tier:
-    driver: bridge
+    postgres:
+        image: postgres:10.5
+        restart: always
+        environment:
+          - POSTGRES_USER=postgres
+          - POSTGRES_PASSWORD=postgres
+        logging:
+          options:
+            max-size: 10m
+            max-file: "3"
+        ports:
+          - '5438:5432'
+        volumes: 
+          - ./postgres-data:/var/lib/postgresql/data
+          # copy the sql script to create tables
+          - ./sql/create_tables.sql:/docker-entrypoint-initdb.d/create_tables.sql
