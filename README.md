@@ -31,4 +31,14 @@ pip install r'C:\Users\Cristian\Documents\repos\G4_DP1\requirements.txt'
 cd /G4_DP1/docker/postgres_docker_v2
 ```
 
-2. 
+2. Generamos la imagen :
+````
+docker build -t my-postgres-db ./ 
+````
+
+3. Ejecutamos el contenedor creando la base de datos: 
+````
+docker run -p 5432:5432 -d -e POSTGRES_USER="root" -e POSTGRES_PASSWORD="metaverso" -e POSTGRES_DB="metaverso" -v ${PWD}/pg-data:/var/lib/postgresql/data --name pg-container my-postgres-db
+````
+
+4. En este punto ya tenemos acceso desde la clase "bbdd" del script connection/db_postgres.py
