@@ -1,9 +1,10 @@
-# pip install Faker
-
+from datetime import datetime
 import pandas as pd
 import folium
 import random
 from faker import Faker
+import altair
+
 
 #Código generador de los datos
 
@@ -57,7 +58,6 @@ map = folium.Map(location=[df.lat.mean(), df.lon.mean()], zoom_start=14, control
 for index, df_info in df.iterrows():
     folium.Marker([df_info["lat"], df_info["lon"]], popup=df_info["name"]).add_to(map)
 
-map
 
 # Incluir logo Find Me in Meta en el mapa
 # Guardar logo en formato png
@@ -75,7 +75,6 @@ map_image_overlay
 # Charts in Pop-Up
 # si OK, mover import al principio
 # dataset.head() para ver nombres columnas
-import altair
 altair.renderers.enable('notebook')
 my_cols = pd.DataFrame({'Matchs_state': ['Match', 'No match'], 'Counter': ['nombre_columna_match', 'nombre_columna_nomatch']})
 my_graph_bar = altair.Chart(my_cols, width=300).mark_bar().encode(x='Matchs_state', y='Counter'.properties(title='Match & No-match Counter'))
