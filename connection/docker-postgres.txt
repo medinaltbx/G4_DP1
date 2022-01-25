@@ -14,9 +14,9 @@ docker exec -it 3id bin/bash
 psql -U root -d metaverso
 
 
-CREATE TABLE some_table (
-  id INT PRIMARY KEY NOT NULL,
-  int_col INT NOT NULL,
-  str_col TEXT NOT NULL,
-  bool_col BOOL NOT NULL
+CREATE TABLE raw_data (
+	user_id INT PRIMARY KEY,
+	username VARCHAR ( 50 ) UNIQUE NOT NULL,
+	created_on TIMESTAMP NOT NULL,
+        last_login TIMESTAMP
 );
