@@ -24,3 +24,11 @@ pip install r'C:\Users\Cristian\Documents\repos\G4_DP1\requirements.txt'
 ```
 4. A continuación se pueden ejecutar los scripts de producer.py y consumer.py de la carpeta src
 
+### Conectar con base de datos (provisional):
+
+1. Nos dirigimos a la carpeta postgres_docker_2
+```
+cd /G4_DP1/docker/postgres_docker_v2
+```
+
+2. 
