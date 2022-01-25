@@ -11,12 +11,12 @@ git clone https://github.com/Enriquebadenas/G4_DP1.git
 docker-compose -f docker-compose-expose.yml up
 ```
 Si todo ha ido bien, deberás ver un output similar a este:
-![img_1.png](imgs/img_1.png)
+![img_1.png](images/img_1.png)
 
 En este punto se encuentran corriendo tanto kafka como zookeper, por lo que solo es necesario instalar las dependencias de python recogidas en requirements.txt.
 3. Abrimos el repositorio en el IDE que utilicemos (visual studio code, pycharm etc.) e instalamos las liberías utilizando:
 ```
-pip install G4_DP1/requirements.txt
+pip install -r G4_DP1/requirements.txt
 ```
 Si no funciona, copiad la ruta **absoluta** de requirements, en mi caso:
 ```
