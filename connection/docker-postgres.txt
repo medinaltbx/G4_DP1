@@ -3,6 +3,20 @@ mkdir postgres-docker && cd postgres-docker
 
 mkdir pg-data
 
-docker run -p 5432:5432 -d -e POSTGRES_USER="cristian" -e POSTGRES_PASSWORD="metaverso" -e POSTGRES_DB="metaverso" -v ${PWD}/pg-data:/var/lib/postgresql/data --name pg-container postgres
+docker run -p 5432:5432 -d -e POSTGRES_USER="objectrocket" -e POSTGRES_PASSWORD="1234" -e POSTGRES_DB="some_db" -v ${PWD}/pg-data:/var/lib/postgresql/data --name pg-container postgres
 
-docker run -p 5432:5432 -d -e POSTGRES_USER="objectrocket" -e POSTGRES_PASSWORD="1234" -e POSTGRES_DB="some_db" -v ${PWD}/pg-data:/var/lib/postgresql/data --name pg-container postgres # Docker image
+docker run -p 5432:5432 -d -e POSTGRES_USER="root" -e POSTGRES_PASSWORD="metaverso" -e POSTGRES_DB="metaverso" -v ${PWD}/pg-data:/var/lib/postgresql/data --name pg-container postgres
+
+docker ps
+
+docker exec -it 3id bin/bash
+
+psql -U root -d metaverso
+
+
+CREATE TABLE some_table (
+  id INT PRIMARY KEY NOT NULL,
+  int_col INT NOT NULL,
+  str_col TEXT NOT NULL,
+  bool_col BOOL NOT NULL
+);

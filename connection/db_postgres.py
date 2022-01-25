@@ -11,17 +11,17 @@ from datetime import datetime
 import psycopg2
 try:
     connection = psycopg2.connect(user = "root",
-                                  password = "password",
+                                  password = "1234",
                                   host = "127.0.0.1",
                                   port = "5432",
-                                  database = "bookstore")
+                                  database = "some_db")
 
     cursor = connection.cursor()
     # Print PostgreSQL Connection properties
     print ( connection.get_dsn_parameters(),"\n")
 
     # Print PostgreSQL version
-    cursor.execute("SELECT version();")
+    cursor.execute("SELECT * FROM INFORMATION_SCHEMA.TABLES")
     record = cursor.fetchone()
     print("You are connected to - ", record,"\n")
 
