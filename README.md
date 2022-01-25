@@ -1,4 +1,7 @@
 # G4_DP1
+
+![logo](images/logo.png)
+
 ### Forma de uso del proyecto:
 
 
