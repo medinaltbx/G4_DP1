@@ -2,6 +2,7 @@ from kafka import KafkaConsumer, KafkaProducer
 from json import loads
 from json import dumps
 from geopy.distance import geodesic
+from connection.db_postgres_v2 import bbdd
 consumer = KafkaConsumer(
     'generator',
     bootstrap_servers=['localhost:9092'],
@@ -28,6 +29,7 @@ def get_matches(dc):
         id, friends, position = val['id'],val['friends'], val['position']
         for k in friends:
             nearby_friends(position, dc[k]['position'])
+
 
 for event in consumer:
     event_data = original_data = event.value

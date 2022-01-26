@@ -11,22 +11,21 @@ pd.set_option('display.width',None)
 class bbdd:
 
     def __init__(self):
-        # try:
+        try:
 
-        self.engine = create_engine("postgresql+psycopg2://{user}:{pw}@{host}/{db}".format(host='127.0.0.1',
-                                                                                     db='metaverso',
-                                                                                     user='root',
-                                                                                     pw='metaverso'),
-                                    poolclass=NullPool)
+            self.engine = create_engine("postgresql+psycopg2://{user}:{pw}@{host}/{db}".format(host='127.0.0.1',
+                                                                                         db='metaverso',
+                                                                                         user='root',
+                                                                                         pw='metaverso'),
+                                        poolclass=NullPool)
 
-        # except Exception as e:
-        #     print('No conectado a la base de datos: ', e)
+        except Exception as e:
+            print('No conectado a la base de datos: ', e)
 
     def get_query(self, query):
         with self.engine.connect() as connection:
             print('CONNECTED')
             result = pd.read_sql(query, connection)
-            # result = pd.read_sql_table(query, con=connection)
             connection.close()
 
             return result
@@ -52,10 +51,10 @@ class bbdd:
 
             connection.close()
 
-print('SECOND')
-data = pd.DataFrame(data=[[1,"molly","smith",1,2,3,4,5, 6, 7,8, 9, 10, 1.1, 1.2, "car", 1, "male", 1.1, 1.2,"2010-01-01"]],
-                    columns=['id','name','last_name','f1','f2','f3','f4','f5','f6','f7','f8','f9','f10','lat','lon','transport','age','gender','weight','height','time'])
-
-bbdd().upload_raw_data(data)
-res = bbdd().get_query('select * from raw_data;')
-print(res)
+# print('SECOND')
+# data = pd.DataFrame(data=[[1,"molly","smith",1,2,3,4,5, 6, 7,8, 9, 10, 1.1, 1.2, "car", 1, "male", 1.1, 1.2,"2010-01-01"]],
+#                     columns=['id','name','last_name','f1','f2','f3','f4','f5','f6','f7','f8','f9','f10','lat','lon','transport','age','gender','weight','height','time'])
+#
+# bbdd().upload_raw_data(data)
+# res = bbdd().get_query('select * from raw_data;')
+# print(res)
