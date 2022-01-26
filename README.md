@@ -2,7 +2,7 @@ Data Project 1 - Master Data Analytics EDEM
 
 Grupo 4 - Caso 1 - Metaverso
 
-![logo.png](images/logo.png)
+![logo.png](images/logopng.png)
 
 ### Forma de uso del proyecto:
 
