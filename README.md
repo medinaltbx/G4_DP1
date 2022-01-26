@@ -29,19 +29,25 @@ pip install r'C:\Users\Cristian\Documents\repos\G4_DP1\requirements.txt'
 
 ### Conectar con base de datos (provisional):
 
-1. Nos dirigimos a la carpeta postgres_docker_2
+1. Nos dirigimos a la carpeta postgres_docker_3/pg_data
 ```
-cd /G4_DP1/docker/postgres_docker_v2
+cd /G4_DP1/docker/postgres_docker_v3/pg_data
 ```
 
-2. Generamos la imagen :
-````
-docker build -t my-postgres-db ./ 
-````
-
-3. Ejecutamos el contenedor creando la base de datos: 
+2.Ejecutamos el contenedor creando la base de datos: 
 ````
 docker run -p 5432:5432 -d -e POSTGRES_USER="root" -e POSTGRES_PASSWORD="metaverso" -e POSTGRES_DB="metaverso" -v ${PWD}/pg-data:/var/lib/postgresql/data --name pg-container postgres
 ````
 
-4. En este punto ya tenemos acceso desde la clase "bbdd" del script connection/db_postgres.py (Actualmente no cuenta con ninguna tabla, ver más adelante como crearla desde el inicio)
+3.En este punto ya tenemos acceso desde la clase "bbdd" del script connection/db_postgres.py (Actualmente no cuenta con ninguna tabla, ver más adelante como crearla desde el inicio). Podemos comprobar su comportamiento accediendo al contenedor. Para ello, buscamos el id del contenedor:
+````
+docker ps
+````
+4. Localizamos el identificador del contenedor (con los tres primeros dígitos es suficiente) y ejecutamos:
+```
+docker exec -it 3id bin/bash
+```
+5. Solo nos queda acceder a la base de datos ejecutando:
+```
+psql -U root -d metaverso
+```
