@@ -2,6 +2,13 @@ Data Project 1 - Master Data Analytics EDEM
 
 Grupo 4 - Caso 1 - Metaverso
 
+Equipo:
+- Enrique Badenas Cazorla
+- Ramón Casans Camp
+- Cristian Medina Azorín
+- Hermán Redondo Lázaro
+- Galo Valle GarcÍa
+
 ![logo.png](images/logopng.png)
 
 ### Forma de uso del proyecto:
