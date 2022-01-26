@@ -1,5 +1,6 @@
 from datetime import datetime
 import pandas as pd
+import numpy as np
 import psycopg2
 from sqlalchemy import create_engine
 pd.set_option('display.width',None)
@@ -57,6 +58,11 @@ class BBDD:
                 cursor.close()
 
 print('SECOND')
-BBDD().set_query('''insert into raw_data(user_id,username,created_on,last_login) VALUES (3,'C','2011-01-01','2011-01-01');''')
+q = '''insert into raw_data VALUES (1,"molly","smith",1,2, \
+                                    3,4,5, 6, 7, \
+                                    8, 9, 10, 1.1, 1.2, \
+                                    "car", 1, "male", 1.1, 1.2, \
+                                    "2010-01-01");'''
+BBDD().set_query(q)
 res = BBDD().get_query('''select * from raw_data''')
 print(res)

@@ -1,3 +1,4 @@
+import pickle
 from time import sleep
 from json import dumps
 from kafka import KafkaProducer
@@ -35,7 +36,7 @@ def initiate_data():
         user["gender"] = random.choice(["man", "woman"])
         user["weight"] = random.uniform(60, 110)
         user["height"] = random.uniform(150, 210)
-        user["bodyfat"] = random.uniform(3, 45)
+        # user["bodyfat"] = random.uniform(3, 45)
         # user["bloodpressure_sist"] = random.uniform(120, 180)
         # user["bloodpressure_diast"] = random.uniform(70, 120)
         # user["cholesterol"] = random.uniform(150, 300)
