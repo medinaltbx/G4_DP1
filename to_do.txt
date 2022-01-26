@@ -1,0 +1,3 @@
+- Poner arquitectura al principio
+- Que partes hemos descartado y por que
+- Los datos son suministrados por el administrador del metaverso

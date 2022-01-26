@@ -40,5 +40,4 @@ def transform_raw(dc_data):
 while True:
     for event in consumer_raw:
         dc = event.value
-        df = transform_raw(dc)
-        bbdd().upload_raw_data(df)
+        transform_raw(dc)
