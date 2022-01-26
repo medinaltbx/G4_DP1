@@ -25,6 +25,7 @@ def transform_match(dc):
 
 while True:
     for event in consumer_match:
+        print('GOT EVENT!')
         dc = event.value
-        df = transform_match(dc)
-        bbdd().upload_raw_data(df)
+        print(dc)
+        exit(0)

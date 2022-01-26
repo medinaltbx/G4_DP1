@@ -24,19 +24,22 @@ def nearby_friends(actual_person,friend):
     dist = geodesic(pos_user, pos_friend).meters
     if dist <= 100:
         # Send data
-        print(pos_user)
-        print(pos_friend)
         print('MATCH. FRIENDS ARE NEARBY: ', dist, 'METERS')
-        print('time1', actual_person['time'])
-        print('time2', friend['time'])
-        exit(0)
+        dc_match = {'user':actual_person,'friend':friend, 'dist':dist}
+        producer.send('matches', value=dc_match)
 
 def get_matches(dc):
+
     for actual_person in dc.values():
+        # if isinstance(actual_person['friends'],float):
+        #     actual_person['friends'] = list(actual_person['friends'])
         friends = actual_person['friends']
         for friend in friends:
-            nearby_friends(actual_person, dc[friend])
-
+            try:
+                nearby_friends(actual_person, dc[friend])
+            except KeyError as e:
+                # print('KEY ERROR: ',e)
+                    continue
 
 for event in consumer:
     event_data = original_data = event.value

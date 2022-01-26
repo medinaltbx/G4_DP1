@@ -36,15 +36,16 @@ class bbdd:
             connection.close()
 
     def upload_raw_data(self, data):
-
-        data.drop_duplicates(inplace=True)
-        data = data[['id','name','last_name','f1','f2','f3','f4','f5','f6','f7','f8','f9','f10','lat','lon','transport','age','gender','weight','height','time']]
-        dc_types = {'id': INTEGER(),'name': VARCHAR(length=50),'last_name':VARCHAR(length=50),'f1': INTEGER(),'f2': INTEGER(),
-                    'f3': INTEGER(),'f4': INTEGER(),'f5': INTEGER(),'f6': INTEGER(),'f7': INTEGER(),'f8': INTEGER(),'f9': INTEGER(),'f10': INTEGER(),
-                    'lat':Float(precision=6, asdecimal=True),'lon':Float(precision=6, asdecimal=True),'transport':VARCHAR(length=50),'age':INTEGER(),
-                    'gender':VARCHAR(length=5),'weight':Float(precision=4, asdecimal=True),'height':Float(precision=4, asdecimal=True),'time':TIMESTAMP(0)
-                    }
-
+        try:
+            data.drop_duplicates(inplace=True)
+            data = data[['id','name','last_name','f1','f2','f3','f4','f5','f6','f7','f8','f9','f10','lat','lon','transport','age','gender','weight','height','time']]
+            dc_types = {'id': INTEGER(),'name': VARCHAR(length=50),'last_name':VARCHAR(length=50),'f1': INTEGER(),'f2': INTEGER(),
+                        'f3': INTEGER(),'f4': INTEGER(),'f5': INTEGER(),'f6': INTEGER(),'f7': INTEGER(),'f8': INTEGER(),'f9': INTEGER(),'f10': INTEGER(),
+                        'lat':Float(precision=6, asdecimal=True),'lon':Float(precision=6, asdecimal=True),'transport':VARCHAR(length=50),'age':INTEGER(),
+                        'gender':VARCHAR(length=5),'weight':Float(precision=4, asdecimal=True),'height':Float(precision=4, asdecimal=True),'time':TIMESTAMP(0)
+                        }
+        except:
+            pass
         with self.engine.connect() as connection:
             try:
                 data.to_sql(name="raw_data",
