@@ -26,19 +26,17 @@ def nearby_friends(actual_person,friend):
     dist = geodesic(pos_user, pos_friend).meters
     if dist <= 100:
         # Send data
-        print('MATCH. FRIENDS ARE NEARBY: ', dist, 'METERS')
+        # print('MATCH. FRIENDS ARE NEARBY: ', dist, 'METERS')
         dc_match = {'user_id':actual_person['id'],'friend_id':friend['id'], 'time':actual_person['time'], 'dist':dist}
         print('ENVIO MENSAJE; ', dc_match)
         producer.send('matches', value=dc_match)
-        producer.flush()
-        time.sleep(2)
+        # producer.flush()
+        # time.sleep(3)
 
 
 def get_matches(dc):
 
     for actual_person in dc.values():
-        # if isinstance(actual_person['friends'],float):
-        #     actual_person['friends'] = list(actual_person['friends'])
         friends = actual_person['friends']
         for friend in friends:
             try:

@@ -1,3 +1,5 @@
+import time
+
 from connection.db_postgres import bbdd
 import pandas as pd
 from kafka import KafkaConsumer, KafkaProducer
@@ -9,7 +11,7 @@ consumer_raw = KafkaConsumer(
     bootstrap_servers=['localhost:9092'],
     auto_offset_reset='earliest',
     enable_auto_commit=True,
-    group_id='my-group-id',
+    group_id=None,
     value_deserializer=lambda x: loads(x.decode('utf-8')))
 
 def create_friend_columns(dc):
@@ -36,8 +38,12 @@ def transform_raw(dc_data):
         df = pd.DataFrame(dc, index=[0])
         bbdd().upload_raw_data(df)
         print('Subida ok')
+        time.sleep(2)
+
 
 while True:
+    print(consumer_raw.topics())
     for event in consumer_raw:
         dc = event.value
+        print(dc)
         transform_raw(dc)
