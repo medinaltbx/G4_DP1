@@ -1,1 +1,0 @@
-ADD world.sql /docker-entrypoint-initdb.d/

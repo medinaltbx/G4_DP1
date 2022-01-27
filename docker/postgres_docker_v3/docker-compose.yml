@@ -1,20 +1,19 @@
-version: '3'
+version: '3.7'
 services:
-
-  postgres_db:
-    image: postgres:11.1
-    environment:   # Set up postgres database name and password
-      POSTGRES_PASSWORD: metaverso
-      POSTGRES_DB: metaverso
-      POSTGRES_USER: root
-    ports:    # Set up ports exposed for other containers to connect to
-      - 5433:5432
-    networks:
-      - app-tier
-    volumes:
-      - ./postgres:/docker-entrypoint-initdb.d
-
-
-networks:
-  app-tier:
-    driver: bridge
+    postgres:
+        image: postgres:10.5
+        restart: always
+        environment:
+          - POSTGRES_USER=root
+          - POSTGRES_PASSWORD=metaverso
+          - POSTGRES_DB="metaverso"
+        logging:
+          options:
+            max-size: 10m
+            max-file: "3"
+        ports:
+          - '5432:5432'
+        volumes: 
+          - ./postgres-data:/var/lib/postgresql/data
+          # copy the sql script to create tables
+          - ./sql/create_tables.sql:/docker-entrypoint-initdb.d/create_tables.sql
