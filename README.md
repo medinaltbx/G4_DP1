@@ -23,7 +23,7 @@ git clone https://github.com/Enriquebadenas/G4_DP1.git
 docker-compose -f docker-compose-expose.yml up
 ```
 Si todo ha ido bien, deberás ver un output similar a este:
-![img_1.png](images/img_1.png)
+![img_1.png](images/zookeper_running.png)
 
 En este punto se encuentran corriendo tanto kafka como zookeper, por lo que solo es necesario instalar las dependencias de python recogidas en requirements.txt.
 3. Abrimos el repositorio en el IDE que utilicemos (visual studio code, pycharm etc.) e instalamos las liberías utilizando:
@@ -36,7 +36,7 @@ pip install r'C:\Users\Cristian\Documents\repos\G4_DP1\requirements.txt'
 ```
 4. A continuación se pueden ejecutar los scripts de producer.py y consumer.py de la carpeta src
 
-### Conectar con base de datos (provisional):
+### Conectar con base de datos:
 
 1. Nos dirigimos a la carpeta G4_DP1\docker\docker_postgres_with_data
 ```
@@ -53,7 +53,7 @@ El contenedor se inicializa automáticamente creando las dos tablas PostgreSQL, 
 ````
 docker ps
 ````
-4. Localizamos el identificador del contenedor (con los tres primeros dígitos es suficiente) y ejecutamos:
+4. **Localizamos el identificador del contenedor** (con los tres primeros dígitos es suficiente) y ejecutamos:
 ```
 docker exec -it 3id bin/bash
 ```
@@ -62,3 +62,30 @@ docker exec -it 3id bin/bash
 psql -U root -d metaverso
 ```
 6. Podemos realizar consultas sobre la base de datos para comprobar que todo se está subiendo correctamente.
+
+### Ejecutar el proyecto:
+
+Una vez que contamos con los contenedores referentes a kafka y a PostgreSQL corriendo, podemos pasar a ejecutar las partes del proyecto.
+
+1. En primer lugar, ejcutamos el script producer. El objetivo de este script es generar los datos y enviarlos a un topic de Kafka llamado _generator_. Podemos ejecutar el script mediante el IDE que estemos utilizando o bien mediante consola. Para ello, nos situamos en la carpeta _src_ y ejecutamos:
+
+```
+python producer.py
+```
+
+Una vez que se encuentre bajo ejecución, observaremos un output similar al siguiente:
+![img.png](images/datagenerator.png)
+
+2. En segundo lugar, ejecutaremos el script upload_raw_data.py, el cual leerá del topic _generator_, transformará los mensajes a formato tabular y los almacernará en la tabla _raw_data_.
+3. Tras esto, podemos ejecutar el script _consumer.py_, el cual contiene toda la lógica para calcular los matches entre amigos. Lee los datos del topic _generator_, calcula los matches y transmite el resultado al topic _matches_
+4. Por último, ejecutamos el script _upload_match.py_, el cual se encarga de captar todos los mensajes del topic _matches_, tranformar los datos y subirlos a su tabla correspondiente en base de datos _matches_
+5. Para comprobar que todo ha funcionado, accedemos a base de datos siguiendo los pasos explicados en el apartado anterior. Ejecutamos los comandos:
+```
+select * from raw_data;
+```
+![img.png](images/raw_data.png)
+
+````
+select * from matches;
+````
+![img_1.png](images/matches.png)
