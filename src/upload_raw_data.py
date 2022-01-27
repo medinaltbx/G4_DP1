@@ -1,4 +1,4 @@
-from connection.db_postgres_v2 import bbdd
+from connection.db_postgres import bbdd
 import pandas as pd
 from kafka import KafkaConsumer, KafkaProducer
 from json import loads

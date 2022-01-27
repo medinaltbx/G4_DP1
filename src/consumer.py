@@ -1,8 +1,10 @@
+import time
+
 from kafka import KafkaConsumer, KafkaProducer
 from json import loads
 from json import dumps
 from geopy.distance import geodesic
-from connection.db_postgres_v2 import bbdd
+from connection.db_postgres import bbdd
 consumer = KafkaConsumer(
     'generator',
     bootstrap_servers=['localhost:9092'],
@@ -25,8 +27,12 @@ def nearby_friends(actual_person,friend):
     if dist <= 100:
         # Send data
         print('MATCH. FRIENDS ARE NEARBY: ', dist, 'METERS')
-        dc_match = {'user':actual_person,'friend':friend, 'dist':dist}
+        dc_match = {'user_id':actual_person['id'],'friend_id':friend['id'], 'time':actual_person['time'], 'dist':dist}
+        print('ENVIO MENSAJE; ', dc_match)
         producer.send('matches', value=dc_match)
+        producer.flush()
+        time.sleep(2)
+
 
 def get_matches(dc):
 
@@ -40,7 +46,8 @@ def get_matches(dc):
             except KeyError as e:
                 # print('KEY ERROR: ',e)
                     continue
-
-for event in consumer:
-    event_data = original_data = event.value
-    get_matches(event_data)
+while True:
+    for event in consumer:
+        event_data = original_data = event.value
+        print('DATA RECIVED: ', event_data)
+        get_matches(event_data)

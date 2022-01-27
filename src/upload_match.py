@@ -1,7 +1,8 @@
-from connection.db_postgres_v2 import bbdd
+from connection.db_postgres import bbdd
 import pandas as pd
 from kafka import KafkaConsumer, KafkaProducer
 from json import loads
+from connection.db_postgres import bbdd
 import numpy as np
 
 consumer_match = KafkaConsumer(
@@ -12,20 +13,18 @@ consumer_match = KafkaConsumer(
     group_id='my-group-id',
     value_deserializer=lambda x: loads(x.decode('utf-8')))
 
-def create_friend_columns(dc):
-    amigos = dc['friends']
-    for c, a in enumerate(amigos):
-        dc[f'f{c+1}'] = a
-    for e in range(len(amigos)+1,11):
-        dc[f'f{e}'] = np.nan
-    return dc
-
 def transform_match(dc):
+    user_id = int(dc['user_id'].replace('-', ''))
+    friend_id = int(dc['friend_id'].replace('-', ''))
+    df = pd.DataFrame({'user_id':user_id,'friend_id':friend_id,'distance':dc['dist'],'time':dc['time']})
+    bbdd().upload_match(df)
+    print('UPLOAD OK')
     pass
 
 while True:
+    print(consumer_match)
     for event in consumer_match:
         print('GOT EVENT!')
         dc = event.value
         print(dc)
-        exit(0)
+        transform_match(dc)

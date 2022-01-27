@@ -23,3 +23,13 @@ CREATE TABLE IF NOT EXISTS raw_data (
 	time TIMESTAMP,
     PRIMARY KEY (id, time)
 );
+
+
+-- Creation of matches table
+CREATE TABLE IF NOT EXISTS matches (
+	user_id INT ,
+	friend_id INT ,
+    distance FLOAT,
+	time TIMESTAMP,
+    PRIMARY KEY (user_id, friend_id, time)
+);
