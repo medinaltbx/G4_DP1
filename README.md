@@ -26,6 +26,7 @@ Si todo ha ido bien, deberás ver un output similar a este:
 ![img_1.png](images/zookeper_running.png)
 
 En este punto se encuentran corriendo tanto kafka como zookeper, por lo que solo es necesario instalar las dependencias de python recogidas en requirements.txt.
+
 3. Abrimos el repositorio en el IDE que utilicemos (visual studio code, pycharm etc.) e instalamos las liberías utilizando:
 ```
 pip install -r G4_DP1/requirements.txt
@@ -77,8 +78,11 @@ Una vez que se encuentre bajo ejecución, observaremos un output similar al sigu
 ![img.png](images/datagenerator.png)
 
 2. En segundo lugar, ejecutaremos el script upload_raw_data.py, el cual leerá del topic _generator_, transformará los mensajes a formato tabular y los almacernará en la tabla _raw_data_.
+
 3. Tras esto, podemos ejecutar el script _consumer.py_, el cual contiene toda la lógica para calcular los matches entre amigos. Lee los datos del topic _generator_, calcula los matches y transmite el resultado al topic _matches_
+
 4. Por último, ejecutamos el script _upload_match.py_, el cual se encarga de captar todos los mensajes del topic _matches_, tranformar los datos y subirlos a su tabla correspondiente en base de datos _matches_
+
 5. Para comprobar que todo ha funcionado, accedemos a base de datos siguiendo los pasos explicados en el apartado anterior. Ejecutamos los comandos:
 ```
 SELECT * FROM raw_data;
