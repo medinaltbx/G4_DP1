@@ -2,9 +2,11 @@ from datetime import datetime
 import pandas as pd
 import folium
 import random
+
 from faker import Faker
 import altair
-
+from IPython.display import display
+import webbrowser
 
 #Código generador de los datos
 
@@ -34,7 +36,6 @@ for i in range(0,USERS_TOTAL):
         user["previouspatology"]=random.choice(["0","1"])
         user["time"]=datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f")
         users[user["id"]]=user
-        
 
 
 #Generamos una lista con las claves del diccionario para pode iterar
@@ -48,17 +49,23 @@ df['lat'] = None
 df['lon'] = None
 df['name'] = None
 
-i in range (0,USERS_TOTAL):
+for i in range (0,USERS_TOTAL):
   a=listaclaves[i]
   df.loc[i+1]=[users[a]['position']['lat'], users[a]['position']['lon'],users[a]['name']]
+
+
 
 #Generamos el mapa mediante la función folium
   
 map = folium.Map(location=[df.lat.mean(), df.lon.mean()], zoom_start=14, control_scale=True)
 for index, df_info in df.iterrows():
-    folium.Marker([df_info["lat"], df_info["lon"]], popup=df_info["name"]).add_to(map)
+        folium.Marker([df_info["lat"], df_info["lon"]], popup=df_info["name"]).add_to(map)
+        # map.save("map.html")
+        # webbrowser.open("map.html")
+        iframe = map._repr_html_()
+        display(HTML(iframe))
 
-
+exit(0)
 # Incluir logo Find Me in Meta en el mapa
 # Guardar logo en formato png
 # Bounds = donde situar el logo, sustituir por las coordenadas de la esquina a escoger
