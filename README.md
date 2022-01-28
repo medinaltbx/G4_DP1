@@ -81,11 +81,11 @@ Una vez que se encuentre bajo ejecución, observaremos un output similar al sigu
 4. Por último, ejecutamos el script _upload_match.py_, el cual se encarga de captar todos los mensajes del topic _matches_, tranformar los datos y subirlos a su tabla correspondiente en base de datos _matches_
 5. Para comprobar que todo ha funcionado, accedemos a base de datos siguiendo los pasos explicados en el apartado anterior. Ejecutamos los comandos:
 ```
-select * from raw_data;
+SELECT * FROM raw_data;
 ```
 ![img.png](images/raw_data.png)
 
 ````
-select * from matches;
+SELECT * FROM matches;
 ````
 ![img_1.png](images/matches.png)
