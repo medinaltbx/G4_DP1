@@ -1,51 +1,97 @@
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<meta charset="utf-8"/>-->
+<!--<head>-->
+<!--    <script src="https://unpkg.com/leaflet@1.0.2/dist/leaflet.js"></script>-->
+<!--    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.2/dist/leaflet.css"/>-->
+
+<!--    <style>-->
+<!--        #map {-->
+<!--            widh: 50px;-->
+<!--            height: 600px;-->
+<!--        }-->
+<!--    </style>-->
+
+<!--</head>-->
+<!--<body>-->
+<!--<div id="map"></div>-->
+<!--<script>-->
+
+<!--    var map = L.map('map').setView([39.46975, -0.37739],-->
+<!--        13);-->
+
+<!--    L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {-->
+<!--        attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>',-->
+<!--        maxZoom: 18-->
+<!--    }).addTo(map);-->
+
+<!--    L.control.scale().addTo(map);-->
+<!--    L.marker([41.66, -4.71], {draggable: true}).addTo(map);-->
+<!--    var source = new EventSource('/topic/generator');-->
+<!--    source.addEventListener('message', function (e) {-->
+<!--        console.log('LLEGA EVENTO:')-->
+<!--        marker = L.marker([39.46975, -0.37739]).addTo(mymap)-->
+<!--        obj = JSON.parse(e.data);-->
+<!--        // console.log(obj);-->
+<!--        let markers = [];-->
+<!--        for (var key in obj) {-->
+<!--            aux = obj[key]-->
+<!--            console.log(aux);-->
+<!--        }-->
+<!--        // lat = aux["position"]["lat"];-->
+<!--        // long = aux["position"]["lon"];-->
+<!--        // // username = obj["name"];-->
+<!--        // // marker = L.marker([lat,long],).addTo(mymap).bindPopup('Username: <strong>' + username + '</strong>');-->
+<!--        // marker = L.marker([lat,long],).addTo(mymap)-->
+
+
+<!--    }, false);-->
+
+<!--</script>-->
+<!--&lt;!&ndash;<script type="text/javascript" src="testing/leaflet_test_2/static/leaf.js"></script>&ndash;&gt;-->
+<!--</body>-->
+<!--</html>-->
+
+
 <!DOCTYPE html>
 <html>
-<meta charset="utf-8"/>
 <head>
-    <script src="https://unpkg.com/leaflet@1.0.2/dist/leaflet.js"></script>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.2/dist/leaflet.css"/>
-
-    <style>
-        #map {
-            widh: 50px;
-            height: 600px;
-        }
-    </style>
-
+    <title>Simple Leaflet Map</title>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" href="https://d19vzq90twjlae.cloudfront.net/leaflet-0.7/leaflet.css"/>
 </head>
 <body>
-<div id="map"></div>
+
+<div id="map" style="width: 1200px; height: 720px"></div>
+
+<script src="https://d19vzq90twjlae.cloudfront.net/leaflet-0.7/leaflet.js"></script>
 <script>
-
-    var map = L.map('map').setView([41.66, -4.72],
-        14);
-
+    var map = L.map('map').setView([39.46975, -0.37739], 13);
+    mapLink =
+        '<a href="http://openstreetmap.org">OpenStreetMap</a>';
     L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>',
-        maxZoom: 18
+        attribution: '&copy; ' + mapLink + ' Contributors',
+        maxZoom: 18,
     }).addTo(map);
-
-    L.control.scale().addTo(map);
-    // L.marker([41.66, -4.71], {draggable: true}).addTo(map);
+    let planes = [["name", 39.46975, -0.37739],["name", 39.56974, -0.37739]]
+    for (var i = 0; i < planes.length; i++) {
+        marker = new L.marker([planes[i][1], planes[i][2]])
+            .bindPopup(planes[i][0])
+            .addTo(map);
+    }
     var source = new EventSource('/topic/generator');
     source.addEventListener('message', function (e) {
         console.log('LLEGA EVENTO:')
-        // marker = L.marker([39.46975, -0.37739]).addTo(mymap)
         obj = JSON.parse(e.data);
-        // console.log(obj);
         for (var key in obj) {
             aux = obj[key]
-            console.log(aux)
-            // lat = aux["position"]["lat"];
-            // long = aux["position"]["lon"];
-            // // username = obj["name"];
-            // // marker = L.marker([lat,long],).addTo(mymap).bindPopup('Username: <strong>' + username + '</strong>');
-            // marker = L.marker([lat,long],).addTo(mymap)
+            lat = aux["position"]["lat"];
+            long = aux["position"]["lon"];
+            marker = L.marker([lat,long],).addTo(map)
         }
-
-
     }, false);
-
 </script>
+
+<!--<script type="text/javascript">src=r"C:\\Users\\Cristian Medina\\Desktop\\G4_DP1\\testing\\leaflet_test_2\\static\\test.js"</script>-->
 </body>
 </html>
