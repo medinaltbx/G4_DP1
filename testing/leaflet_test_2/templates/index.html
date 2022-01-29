@@ -79,6 +79,7 @@
             .bindPopup(planes[i][0])
             .addTo(map);
     }
+    var markers = L.markerClusterGroup();
     var source = new EventSource('/topic/generator');
     source.addEventListener('message', function (e) {
         console.log('LLEGA EVENTO:')
@@ -88,7 +89,9 @@
             lat = aux["position"]["lat"];
             long = aux["position"]["lon"];
             marker = L.marker([lat,long],).addTo(map)
+            markers.addLayer(marker);
         }
+        markers.clearLayers();
     }, false);
 </script>
 
