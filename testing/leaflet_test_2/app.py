@@ -9,7 +9,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-    return(render_template('dqindex.html'))
+    return(render_template('index.html'))
 
 @app.route('/topic/<topicname>')
 def get_messages(topicname):

@@ -10,7 +10,7 @@ from datetime import datetime
 from connection.db_postgres import bbdd
 
 faker = Faker('es_ES')
-USERS_TOTAL=100
+USERS_TOTAL=15
 users={}
 lat_min=39.4
 lat_max=39.5
@@ -119,7 +119,7 @@ while True:
             print(users_generated)
             producer.send('generator', value=users_generated)
             # transform_raw(users_generated) # En el caso de que no consigua desbloquear los mensajes
-            time.sleep(2)
+            time.sleep(5)
     except Exception as err:
         print(f"Unexpected {err}, {type(err)}")
         break
