@@ -73,25 +73,20 @@
         attribution: '&copy; ' + mapLink + ' Contributors',
         maxZoom: 18,
     }).addTo(map);
-    let planes = [["name", 39.46975, -0.37739],["name", 39.56974, -0.37739]]
-    for (var i = 0; i < planes.length; i++) {
-        marker = new L.marker([planes[i][1], planes[i][2]])
-            .bindPopup(planes[i][0])
-            .addTo(map);
-    }
-    var markers = L.markerClusterGroup();
+    var markersLayer = new L.LayerGroup(); // NOTE: Layer is created here!
     var source = new EventSource('/topic/generator');
     source.addEventListener('message', function (e) {
+        markersLayer.clearLayers();
         console.log('LLEGA EVENTO:')
         obj = JSON.parse(e.data);
         for (var key in obj) {
             aux = obj[key]
             lat = aux["position"]["lat"];
             long = aux["position"]["lon"];
-            marker = L.marker([lat,long],).addTo(map)
-            markers.addLayer(marker);
+            marker = L.marker([lat,long],) //.addTo(map)
+            markersLayer.addLayer(marker);
         }
-        markers.clearLayers();
+        markersLayer.addTo(map);
     }, false);
 </script>
 

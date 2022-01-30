@@ -1,10 +1,6 @@
 
 mkdir postgres-docker && cd postgres-docker
 
-mkdir pg-data
-
-docker run -p 5432:5432 -d -e POSTGRES_USER="root" -e POSTGRES_PASSWORD="metaverso" -e POSTGRES_DB="metaverso" -v ${PWD}/pg-data:/var/lib/postgresql/data --name pg-container postgres
-
 docker exec -it 3id bin/bash
 
 psql -U root -d metaverso
