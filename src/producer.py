@@ -10,7 +10,7 @@ from datetime import datetime
 from connection.db_postgres import bbdd
 
 faker = Faker('es_ES')
-USERS_TOTAL=5
+USERS_TOTAL=100
 users={}
 lat_min=39.4
 lat_max=39.5

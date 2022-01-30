@@ -33,3 +33,9 @@ CREATE TABLE IF NOT EXISTS matches (
 	time TIMESTAMP,
     PRIMARY KEY (user_id, friend_id, time)
 );
+
+-- Creation of USER and PERMISSIONS FOR GRAFANA
+CREATE USER grafanaReader WITH PASSWORD 'metaverso';
+GRANT CONNECT ON DATABASE metaverso TO grafanaReader;
+GRANT SELECT ON raw_data TO grafanaReader;
+GRANT SELECT ON matches TO grafanaReader;
