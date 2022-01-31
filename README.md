@@ -19,6 +19,7 @@ Equipo:
 git clone https://github.com/Enriquebadenas/G4_DP1.git
 ```
 2. Dirígete a la ruta donde se encuentre kafka-zookp-docker y ejecuta:
+![image](https://user-images.githubusercontent.com/90957463/151770262-a91fa6ca-78d5-48df-a357-cb5e0e6249be.png)
 ```
 docker-compose -f docker-compose-expose.yml up
 ```
@@ -35,7 +36,6 @@ Si no funciona, copiad la ruta **absoluta** de requirements, en mi caso:
 ```
 pip install r'C:\Users\Cristian\Documents\repos\G4_DP1\requirements.txt'
 ```
-4. A continuación se pueden ejecutar los scripts de producer.py y consumer.py de la carpeta src
 
 ### Conectar con base de datos:
 
@@ -93,3 +93,11 @@ SELECT * FROM raw_data;
 SELECT * FROM matches;
 ````
 ![img_1.png](images/matches.png)
+
+### Visualizaciones:
+
+1. Dashboard conexiones, abrir navegador y acceder a:
+localhost:3000
+
+2. Mapa con los usuarios real-time, abrir navegador y acceder a:
+localhost:5001
