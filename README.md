@@ -101,6 +101,10 @@ Una vez que todas las partes anteriores se encuentren en ejecución, podemos pas
 ```
 src/leaflet_map_app/app.py
 ```
+y abrir el navegador introduciendo la siguiente ruta:
+```
+localhost:5001
+```
 
 ### Grafana:
 1. Para correr grafana, en primer lugar debemos descargarnos la imagen:
