@@ -19,7 +19,6 @@ Equipo:
 git clone https://github.com/Enriquebadenas/G4_DP1.git
 ```
 2. Dirígete a la ruta donde se encuentre kafka-zookp-docker y ejecuta:
-![image](https://user-images.githubusercontent.com/90957463/151770262-a91fa6ca-78d5-48df-a357-cb5e0e6249be.png)
 ```
 docker-compose -f docker-compose-expose.yml up
 ```
@@ -36,6 +35,7 @@ Si no funciona, copiad la ruta **absoluta** de requirements, en mi caso:
 ```
 pip install r'C:\Users\Cristian\Documents\repos\G4_DP1\requirements.txt'
 ```
+4. A continuación se pueden ejecutar los scripts de producer.py y consumer.py de la carpeta src
 
 ### Conectar con base de datos:
 
@@ -94,10 +94,33 @@ SELECT * FROM matches;
 ````
 ![img_1.png](images/matches.png)
 
-### Visualizaciones:
+### Visualización del mapa en tiempo real:
 
-1. Dashboard conexiones, abrir navegador y acceder a:
+Una vez que todas las partes anteriores se encuentren en ejecución, podemos pasar a visualizar el mapa con los diferentes usuarios. Para ello, necesitamos ejecutar el script _app.py_ ubicado en:
+
+```
+src/leaflet_map_app/app.py
+```
+
+### Grafana:
+1. Para correr grafana, en primer lugar debemos descargarnos la imagen:
+````
+docker run -d -p 3000:3000 --name grafana grafana/grafana-enterprise:8.2.0
+````
+2. Una vez que el contenedor este corriendo, podemos acceder a grafana introduciendo en el navegador la siguiente ruta:
+```
 localhost:3000
+```
+3. Para acceder por primera vez, debemos introducir _admin_ tanto en usuario como en contraseña. Posteriormente, se nos pedirá que cambiemos la contraseña.
 
-2. Mapa con los usuarios real-time, abrir navegador y acceder a:
-localhost:5001
+4. A continuación, debemos conectar grafana a la base de datos. Para ello, rellenaremos los datos de la siguiente forma:
+* Host:  host.docker.internal:5432
+* Databse: metaverso
+* User: grafana
+* Password: metaverso
+* TLS/SSL Mode: disable
+![img.png](images/conexion_grafana.png)
+Presionamos en **Save & Test**. Si todo ha funcionado correctamente, veremos el siguiente mensaje:
+![img.png](images/connection_ok.png)
+5. En este punto ya podemos realizar las visualizaciones que deseemos en la pestaña **dashboard**:
+![img_3.png](images/create_dashboard.png)

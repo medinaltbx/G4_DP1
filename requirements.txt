@@ -8,3 +8,5 @@ numpy~=1.22.1
 altair~=4.2.0
 SQLAlchemy~=1.4.31
 psycopg2~=2.9.3
+Flask~=2.0.2
+pykafka~=2.8.0

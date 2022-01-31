@@ -35,7 +35,11 @@ CREATE TABLE IF NOT EXISTS matches (
 );
 
 -- Creation of USER and PERMISSIONS FOR GRAFANA
-CREATE USER grafanaReader WITH PASSWORD 'metaverso';
-GRANT CONNECT ON DATABASE metaverso TO grafanaReader;
-GRANT SELECT ON raw_data TO grafanaReader;
-GRANT SELECT ON matches TO grafanaReader;
+CREATE USER grafanareader WITH PASSWORD 'metaverso';
+GRANT CONNECT ON DATABASE metaverso TO grafanareader;
+GRANT SELECT ON raw_data TO grafanareader;
+GRANT SELECT ON matches TO grafanareader;
+
+CREATE USER grafana WITH PASSWORD 'metaverso';
+GRANT SELECT ON ALL TABLES IN SCHEMA public TO grafana;
+GRANT EXECUTE ON ALL FUNCTIONS IN SCHEMA public TO grafana;
