@@ -1,10 +1,9 @@
-import time
-
-from kafka import KafkaConsumer, KafkaProducer
-from json import loads
 from json import dumps
+from json import loads
+
 from geopy.distance import geodesic
-from connection.db_postgres import bbdd
+from kafka import KafkaConsumer, KafkaProducer
+
 consumer = KafkaConsumer(
     'generator',
     bootstrap_servers=['localhost:9092'],
@@ -19,15 +18,21 @@ producer = KafkaProducer(
 )
 
 
-def nearby_friends(actual_person,friend):
+def create_dc_match(actual_person, friend, dist):
+    user_id, user_lat, user_lon = actual_person['id'], float(actual_person['position']['lat']), float(actual_person['position']['lon'])
+    friend_id, friend_lat, friend_lon = friend['id'], float(friend['position']['lat']), float(friend['position']['lon'])
+    dc_match = {'user_id': user_id, 'user_lat': user_lat, 'user_lon': user_lon, 'friend_id': friend_id,
+                'friend_lat': friend_lat, 'friend_lon': friend_lon, 'transport':actual_person['transport'], 'dist': dist, 'time': actual_person['time']}
+    return dc_match
 
+
+def nearby_friends(actual_person, friend):
     pos_user = (float(actual_person['position']['lat']), float(actual_person['position']['lon']))
     pos_friend = (float(friend['position']['lat']), float(friend['position']['lon']))
     dist = geodesic(pos_user, pos_friend).meters
-    if dist <= 100:
-        # Send data
+    if dist <= 1000:  # Send data
         # print('MATCH. FRIENDS ARE NEARBY: ', dist, 'METERS')
-        dc_match = {'user_id':actual_person['id'],'friend_id':friend['id'], 'time':actual_person['time'], 'dist':dist}
+        dc_match = create_dc_match(actual_person, friend, dist)
         print('ENVIO MENSAJE; ', dc_match)
         producer.send('matches', value=dc_match)
         # producer.flush()
@@ -35,7 +40,6 @@ def nearby_friends(actual_person,friend):
 
 
 def get_matches(dc):
-
     for actual_person in dc.values():
         friends = actual_person['friends']
         for friend in friends:
@@ -43,7 +47,9 @@ def get_matches(dc):
                 nearby_friends(actual_person, dc[friend])
             except KeyError as e:
                 # print('KEY ERROR: ',e)
-                    continue
+                continue
+
+
 while True:
     for event in consumer:
         event_data = original_data = event.value

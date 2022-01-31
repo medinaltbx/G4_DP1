@@ -61,8 +61,16 @@ class bbdd:
     def upload_match(self, data):
         try:
             data.drop_duplicates(inplace=True)
-            data = data[['user_id','friend_id','distance','time']]
-            dc_types = {'user_id': INTEGER(),'friend_id': INTEGER(),'distance':Float(precision=2, asdecimal=True),'time':TIMESTAMP(0)}
+            data = data[['user_id','user_lat','user_lon','friend_id','friend_lat','friend_lon','transport','distance','time']]
+            dc_types = {'user_id': INTEGER(),
+                        'user_lat': Float(precision=2, asdecimal=True),
+                        'user_lon': Float(precision=2, asdecimal=True),
+                        'friend_id': INTEGER(),
+                        'friend_lat': Float(precision=2, asdecimal=True),
+                        'friend_lon': Float(precision=2, asdecimal=True),
+                        'transport': VARCHAR(50),
+                        'distance':Float(precision=2, asdecimal=True),
+                        'time':TIMESTAMP(0)}
         except:
             pass
         with self.engine.connect() as connection:
@@ -76,11 +84,3 @@ class bbdd:
                 print('Error en subida: ',e)
             finally:
                 connection.close()
-
-# print('SECOND')
-# data = pd.DataFrame(data=[[1,"molly","smith",1,2,3,4,5, 6, 7,8, 9, 10, 1.1, 1.2, "car", 1, "male", 1.1, 1.2,"2010-01-01"]],
-#                     columns=['id','name','last_name','f1','f2','f3','f4','f5','f6','f7','f8','f9','f10','lat','lon','transport','age','gender','weight','height','time'])
-#
-# bbdd().upload_raw_data(data)
-# res = bbdd().get_query('select * from raw_data;')
-# print(res)

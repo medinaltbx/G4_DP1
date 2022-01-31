@@ -1,9 +1,7 @@
-from connection.db_postgres import bbdd
 import pandas as pd
 from kafka import KafkaConsumer, KafkaProducer
 from json import loads
 from connection.db_postgres import bbdd
-import numpy as np
 
 consumer_match = KafkaConsumer(
     'matches',
@@ -15,7 +13,9 @@ consumer_match = KafkaConsumer(
 def transform_match(dc):
     user_id = int(dc['user_id'].replace('-', ''))
     friend_id = int(dc['friend_id'].replace('-', ''))
-    df = pd.DataFrame({'user_id':user_id,'friend_id':friend_id,'distance':dc['dist'],'time':dc['time']}, index=[0])
+    df = pd.DataFrame({'user_id':user_id,'user_lat':dc['user_lat'],'user_lon':dc['user_lon'],
+                       'friend_id':friend_id,'friend_lat':dc['friend_lat'],'friend_lon':dc['friend_lon'],'transport':dc['transport'],
+                       'distance':dc['dist'],'time':dc['time']}, index=[0])
     bbdd().upload_match(df)
     print('UPLOAD OK')
 

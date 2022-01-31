@@ -28,7 +28,12 @@ CREATE TABLE IF NOT EXISTS raw_data (
 -- Creation of matches table
 CREATE TABLE IF NOT EXISTS matches (
 	user_id INT ,
+	user_lat FLOAT,
+	user_lon FLOAT,
 	friend_id INT ,
+    friend_lat FLOAT,
+	friend_lon FLOAT,
+	transport VARCHAR (50),
     distance FLOAT,
 	time TIMESTAMP,
     PRIMARY KEY (user_id, friend_id, time)
