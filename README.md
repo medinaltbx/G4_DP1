@@ -19,14 +19,14 @@ G4_DP1/
 │  ├─ db_postgres.py
 │  ├─ docker-postgres.txt
 ├─ docker/
-│  ├─ docker-grafana/
+│  ├─ docker-grafana/  #Visualizaciones dashboard
 │  │  ├─ docker-compose.yml
 │  │  ├─ info.txt
-│  ├─ docker_postgres_with_data/
+│  ├─ docker_postgres_with_data/  #Contenedor base de datos
 │  │  ├─ sql/
 │  │  │  ├─ create_tables.sql                
 │  │  ├─ docker-compose.yml
-│  ├─ kafka-zookp-docker/
+│  ├─ kafka-zookp-docker/  #Contenedor kafka y zookeeper 
 ├─ images/
 │  ├─ Costes.xlsx
 ├─ src/
