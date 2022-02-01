@@ -16,35 +16,35 @@ G4_DP1/
 ├─ connection/
 │  ├─ pycache__/
 │  ├─ index.js
-│  ├─db_postgres.py
-│  ├─docker-postgres.txt
+│  ├─ db_postgres.py
+│  ├─ docker-postgres.txt
 ├─ docker/
 │  ├─ docker-grafana/
 │  ├─ docker_postgres_with_data/
 │  ├─ kafka-zookp-docker/
 ├─ images/
-│  ├─Costes.xlsx
+│  ├─ Costes.xlsx
 ├─ src/
-│  ├─leaflet_map_app/
-│  │  ├─templates/
-│  │  │  ├─index.html
-│  │  │  ├─logo.png
-│  │  │  ├─logo_con_fondo.png
-│  │  │  ├─matches.html
-│  │  │  ├─white_logo.png
+│  ├─ leaflet_map_app/
+│  │  ├─ templates/
+│  │  │  ├─ index.html
+│  │  │  ├─ logo.png
+│  │  │  ├─ logo_con_fondo.png
+│  │  │  ├─ matches.html
+│  │  │  ├─ white_logo.png
 │  │  ├─ app.py  
-│  │  ├─web_info
-│  │  ├─white_logo.png
-│  ├─consumer.py 
-│  ├─producer.py
-│  ├─upload_match.py
-│  ├─upload_raw_data.py
+│  │  ├─ web_info
+│  │  ├─ white_logo.png
+│  ├─ consumer.py  #Lógica de matches
+│  ├─ producer.py  #Generador de datos
+│  ├─ upload_match.py #Capta matches, transforma y sube datos
+│  ├─ upload_raw_data.py #Transforma y almacena datos
 ├─ testing/
-│  ├─folium_tests/
-│  ├─leaflet_test_1/
-│  ├─Arquitectura v2.pptx
-├─README.md/
-├─requirements.txt
+│  ├─ folium_tests/
+│  ├─ leaflet_test_1/
+│  ├─ Arquitectura v2.pptx
+├─ README.md/
+├─ requirements.txt
 ```
 
 
