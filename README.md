@@ -21,10 +21,10 @@ G4_DP1/
 ├─ docker/
 │  ├─ docker-grafana/
 │  │  ├─ docker-compose.yml
-        create_tables.sql
 │  │  ├─ info.txt
 │  ├─ docker_postgres_with_data/
-│  │  ├─ sql
+│  │  ├─ sql/
+│  │  │  ├─ create_tables.sql                
 │  │  ├─ docker-compose.yml
 │  ├─ kafka-zookp-docker/
 ├─ images/
