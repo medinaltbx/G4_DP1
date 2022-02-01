@@ -27,11 +27,11 @@ G4_DP1/
 ├─ src/
 │  ├─leaflet_map_app/
 │  │  ├─templates/
-│  │  ├─index.html
-│  │  ├─logo.png
-│  │  ├─logo_con_fondo.png
-│  │  ├─matches.html
-│  │  ├─white_logo.png
+│  │  │  ├─index.html
+│  │  │  ├─logo.png
+│  │  │  ├─logo_con_fondo.png
+│  │  │  ├─matches.html
+│  │  │  ├─white_logo.png
 │  │  ├─ app.py  
 │  │  ├─web_info
 │  │  ├─white_logo.png
