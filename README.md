@@ -13,14 +13,6 @@ Equipo:
 
 ```bash
 G4_DP1/
-├─ .idea/
-│ ├─inspectionProfiles/
-│ ├─.gitignore
-│ ├─deployment.xml
-│ ├─kafka_test.iml
-│ ├─misc.xml
-│ ├─modules.xml
-│ ├─vcs.xml
 ├─ connection/
 │  ├─ pycache__/
 │  ├─ index.js
@@ -34,6 +26,15 @@ G4_DP1/
 │  ├─Costes.xlsx
 ├─ src/
 │  ├─leaflet_map_app/
+│  │  ├─templates/
+│  │  ├─index.html
+│  │  ├─logo.png
+│  │  ├─logo_con_fondo.png
+│  │  ├─matches.html
+│  │  ├─white_logo.png
+│  │  ├─ app.py  
+│  │  ├─web_info
+│  │  ├─white_logo.png
 │  ├─consumer.py 
 │  ├─producer.py
 │  ├─upload_match.py
