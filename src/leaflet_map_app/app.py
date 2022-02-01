@@ -11,6 +11,10 @@ app = Flask(__name__)
 def index():
     return(render_template('index.html'))
 
+@app.route("/matches")
+def matches():
+    return(render_template('matches.html'))
+
 @app.route('/topic/<topicname>')
 def get_messages(topicname):
     client = get_kafka_client()

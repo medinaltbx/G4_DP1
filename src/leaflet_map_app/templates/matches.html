@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Leaflet Map</title>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" href="https://d19vzq90twjlae.cloudfront.net/leaflet-0.7/leaflet.css"/>
+</head>
+<body>
+
+<div id="map" style="width: 1200px; height: 720px"></div>
+
+<script src="https://d19vzq90twjlae.cloudfront.net/leaflet-0.7/leaflet.js"></script>
+<script>
+    var map = L.map('map').setView([39.46975, -0.37739], 13);
+    mapLink =
+        '<a href="http://openstreetmap.org">OpenStreetMap</a>';
+    L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; ' + mapLink + ' Contributors',
+        maxZoom: 18,
+    }).addTo(map);
+    var source = new EventSource('/topic/matches');
+    source.addEventListener('message', function (e) {
+        console.log('LLEGA EVENTO:')
+        obj = JSON.parse(e.data);
+        console.log(obj)
+        marker_user = L.marker([obj['user_lat'],obj['user_lon']]).addTo(map)
+        marker_friend = L.marker([obj['friend_lat'],obj['friend_lon']]).addTo(map)
+        function remove_markers(marker_user, marker_friend) {
+            map.removeLayer(marker_user)
+            map.removeLayer(marker_friend)
+        ;}
+        setTimeout(remove_markers, 4000, marker_user, marker_friend)
+        // markersLayer.addTo(map);
+    }, false);
+</script>
+
+<!--<script type="text/javascript">src=r"C:\\Users\\Cristian Medina\\Desktop\\G4_DP1\\testing\\leaflet_test_2\\static\\test.js"</script>-->
+</body>
+</html>

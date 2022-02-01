@@ -30,7 +30,7 @@ def nearby_friends(actual_person, friend):
     pos_user = (float(actual_person['position']['lat']), float(actual_person['position']['lon']))
     pos_friend = (float(friend['position']['lat']), float(friend['position']['lon']))
     dist = geodesic(pos_user, pos_friend).meters
-    if dist <= 1000:  # Send data
+    if dist <= 200:  # Send data
         # print('MATCH. FRIENDS ARE NEARBY: ', dist, 'METERS')
         dc_match = create_dc_match(actual_person, friend, dist)
         print('ENVIO MENSAJE; ', dc_match)
