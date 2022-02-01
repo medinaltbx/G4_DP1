@@ -35,6 +35,15 @@
         "Cine": [39.453494365609735, -0.3705948846378685],
         "Museo": [39.46598858281769, -0.3431144938225893]
     };
+
+    var logo = L.control({position: 'topright'});
+    logo.onAdd = function(map){
+        var div = L.DomUtil.create('div', 'myclass');
+        div.innerHTML= '<img width="100%" src="white_logo.png"/>';
+        return div;
+    }
+    logo.addTo(map);
+
     var localiztionLayer = new L.LayerGroup();
     var greenIcon = new L.Icon({
         iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
