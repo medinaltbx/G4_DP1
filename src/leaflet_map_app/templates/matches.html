@@ -25,12 +25,16 @@
         console.log(obj)
         marker_user = L.marker([obj['user_lat'],obj['user_lon']]).addTo(map)
         marker_friend = L.marker([obj['friend_lat'],obj['friend_lon']]).addTo(map)
-        function remove_markers(marker_user, marker_friend) {
+        latlangs = [marker_user.getLatLng(),marker_friend.getLatLng()]
+        var polyline = L.polyline(latlangs, {color: 'red'}).addTo(map);
+        console.log(polyline)
+        polyline.addTo(map)
+        function remove_markers(marker_user, marker_friend,polyline) {
             map.removeLayer(marker_user)
             map.removeLayer(marker_friend)
+            map.removeLayer(polyline)
         ;}
-        setTimeout(remove_markers, 4000, marker_user, marker_friend)
-        // markersLayer.addTo(map);
+        setTimeout(remove_markers, 4000, marker_user, marker_friend, polyline)
     }, false);
 </script>
 
