@@ -44,7 +44,7 @@ G4_DP1/
 │  ├─Arquitectura v2.pptx
 ├─README.md/
 ├─requirements.txt
-´´´
+```
 
 
 ### Forma de uso del proyecto:
