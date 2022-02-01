@@ -1,16 +1,30 @@
+
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Simple Leaflet Map</title>
-    <meta charset="utf-8"/>
-    <link rel="stylesheet" href="https://d19vzq90twjlae.cloudfront.net/leaflet-0.7/leaflet.css"/>
+    <title>Active users</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://d19vzq90twjlae.cloudfront.net/leaflet-0.7/leaflet.css" />
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+        }
+        html, body, #map {
+            height: 100%;
+            width: 100%;
+        }
+    </style>
+    <link rel="icon" href="logo.png">
 </head>
 <body>
+    <div id="map"></div>
 
-<div id="map" style="width: 1200px; height: 720px"></div>
+    <script src="https://d19vzq90twjlae.cloudfront.net/leaflet-0.7/leaflet.js">
+    </script>
 
-<script src="https://d19vzq90twjlae.cloudfront.net/leaflet-0.7/leaflet.js"></script>
 <script>
+
     var map = L.map('map').setView([39.46975, -0.37739], 13);
     mapLink =
         '<a href="http://openstreetmap.org">OpenStreetMap</a>';
@@ -18,6 +32,14 @@
         attribution: '&copy; ' + mapLink + ' Contributors',
         maxZoom: 18,
     }).addTo(map);
+
+    var logo = L.control({position: 'topleft'});
+    logo.onAdd = function(map){
+        var div = L.DomUtil.create('div', 'myclass');
+        div.innerHTML= "<img src='logo.png'/>";
+        return div;
+    }
+    logo.addTo(map);
     var markersLayer = new L.LayerGroup(); // NOTE: Layer is created here!
     var source = new EventSource('/topic/generator');
     source.addEventListener('message', function (e) {
@@ -34,7 +56,5 @@
         markersLayer.addTo(map);
     }, false);
 </script>
-
-<!--<script type="text/javascript">src=r"C:\\Users\\Cristian Medina\\Desktop\\G4_DP1\\testing\\leaflet_test_2\\static\\test.js"</script>-->
 </body>
 </html>
