@@ -20,7 +20,12 @@ G4_DP1/
 │  ├─ docker-postgres.txt
 ├─ docker/
 │  ├─ docker-grafana/
+│  │  ├─ docker-compose.yml
+        create_tables.sql
+│  │  ├─ info.txt
 │  ├─ docker_postgres_with_data/
+│  │  ├─ sql
+│  │  ├─ docker-compose.yml
 │  ├─ kafka-zookp-docker/
 ├─ images/
 │  ├─ Costes.xlsx
