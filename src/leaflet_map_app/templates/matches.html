@@ -50,8 +50,6 @@
         marker_friend = L.marker([obj['friend_lat'], obj['friend_lon']]).addTo(map)
         latlangs = [marker_user.getLatLng(), marker_friend.getLatLng()]
         var polyline = L.polyline(latlangs, {color: 'red'}).addTo(map);
-        console.log(polyline)
-        polyline.addTo(map)
 
         function remove_markers(marker_user, marker_friend, polyline) {
             map.removeLayer(marker_user)
