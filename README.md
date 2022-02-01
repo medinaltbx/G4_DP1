@@ -14,34 +14,34 @@ Equipo:
 ```bash
 G4_DP1/
 ├─ .idea/
-  ├─inspectionProfiles/
-  ├─.gitignore
-  ├─deployment.xml
-  ├─kafka_test.iml
-  ├─misc.xml
-  ├─modules.xml
-  ├─vcs.xml
+│ ├─inspectionProfiles/
+│ ├─.gitignore
+│ ├─deployment.xml
+│ ├─kafka_test.iml
+│ ├─misc.xml
+│ ├─modules.xml
+│ ├─vcs.xml
 ├─ connection/
 │  ├─ pycache__/
 │  ├─ index.js
-   ├─db_postgres.py
-   ├─docker-postgres.txt
+│  ├─db_postgres.py
+│  ├─docker-postgres.txt
 ├─ docker/
 │  ├─ docker-grafana/
 │  ├─ docker_postgres_with_data/
 │  ├─ kafka-zookp-docker/
 ├─ images/
-   ├─Costes.xlsx
+│  ├─Costes.xlsx
 ├─ src/
-   ├─leaflet_map_app/
-   ├─consumer.py 
-   ├─producer.py
-   ├─upload_match.py
-   ├─upload_raw_data.py
+│  ├─leaflet_map_app/
+│  ├─consumer.py 
+│  ├─producer.py
+│  ├─upload_match.py
+│  ├─upload_raw_data.py
 ├─ testing/
-   ├─folium_tests/
-   ├─leaflet_test_1/
-   ├─Arquitectura v2.pptx
+│  ├─folium_tests/
+│  ├─leaflet_test_1/
+│  ├─Arquitectura v2.pptx
 ├─README.md/
 ├─requirements.txt
 ´´´
