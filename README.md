@@ -48,7 +48,7 @@ G4_DP1/
 │  ├─ folium_tests/
 │  ├─ leaflet_test_1/
 │  ├─ Arquitectura v2.pptx
-├─ README.md/
+├─ README.md
 ├─ requirements.txt
 ```
 
