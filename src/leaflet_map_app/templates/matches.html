@@ -1,15 +1,15 @@
-
 <!DOCTYPE html>
 <html>
 <head>
     <title>Friend matches</title>
-    <meta charset="utf-8" />
-    <link rel="stylesheet" href="https://d19vzq90twjlae.cloudfront.net/leaflet-0.7/leaflet.css" />
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" href="https://d19vzq90twjlae.cloudfront.net/leaflet-0.7/leaflet.css"/>
     <style>
         body {
             padding: 0;
             margin: 0;
         }
+
         html, body, #map {
             height: 100%;
             width: 100%;
@@ -17,10 +17,12 @@
     </style>
 </head>
 <body>
-    <div id="map"></div>
+<div id="map"></div>
 
-    <script src="https://d19vzq90twjlae.cloudfront.net/leaflet-0.7/leaflet.js">
-    </script>
+<!--<script src="https://d19vzq90twjlae.cloudfront.net/leaflet-0.7/leaflet.js">-->
+<!--</script>-->
+
+<script src="https://unpkg.com/leaflet@1.0.0-rc.3/dist/leaflet.js"></script>
 
 <script>
     var map = L.map('map').setView([39.46975, -0.37739], 13);
@@ -30,7 +32,7 @@
         maxZoom: 18,
     }).addTo(map);
 
-        L.Control.Watermark = L.Control.extend({
+    L.Control.Watermark = L.Control.extend({
         onAdd: function (map) {
             var img = L.DomUtil.create('img');
 
@@ -56,7 +58,6 @@
         "Museo": [39.46598858281769, -0.3431144938225893]
     };
 
-
     var localiztionLayer = new L.LayerGroup();
     var greenIcon = new L.Icon({
         iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
@@ -69,7 +70,7 @@
     for (var localization in points_of_interest) {
         lat = points_of_interest[localization][0];
         long = points_of_interest[localization][1];
-        marker = L.marker([lat, long], {icon: greenIcon})//.addTo(map)
+        marker = L.marker([lat, long], {icon: greenIcon}).bindPopup(localization,{permanent: true,direction: 'right',opacity:0.9,});
         localiztionLayer.addLayer(marker);
     }
     localiztionLayer.addTo(map);
@@ -92,7 +93,7 @@
             ;
         }
 
-        setTimeout(remove_markers, 4000, marker_user, marker_friend, polyline)
+        setTimeout(remove_markers, 3000, marker_user, marker_friend, polyline)
     }, false);
 </script>
 </body>
