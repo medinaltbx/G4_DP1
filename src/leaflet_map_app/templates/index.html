@@ -33,14 +33,6 @@
         maxZoom: 18,
     }).addTo(map);
 
-    // var legend2 = L.control({position: 'topright'});
-    // legend2.onAdd = function (map) {
-    //     var div = L.DomUtil.create('div', 'info legend2');
-    //     div.innerHTML = '<img src="https://github.com/Enriquebadenas/G4_DP1/blob/main/src/leaflet_map_app/white_logo.png?raw=true">';
-    //     return div;
-    // };
-    // legend2.addTo(map);
-
     L.Control.Watermark = L.Control.extend({
         onAdd: function (map) {
             var img = L.DomUtil.create('img');
@@ -59,14 +51,6 @@
         return new L.Control.Watermark(opts);
     }
     L.control.watermark({position: 'topright'}).addTo(map);
-
-
-    // var logo = L.control({position: 'topright'});
-    // logo.onAdd = function (map) {
-    //     var div = L.DomUtil.create('div', 'myclass');
-    //     div.innerHTML = '<img width="50%" src="https://github.com/Enriquebadenas/G4_DP1/blob/main/src/leaflet_map_app/white_logo.png?raw=true"/>';
-    //     return div;}
-    // logo.addTo(map);
 
     var markersLayer = new L.LayerGroup(); // NOTE: Layer is created here!
     var source = new EventSource('/topic/generator');
