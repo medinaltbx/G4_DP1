@@ -114,7 +114,7 @@ psql -U root -d metaverso
 
 Una vez que contamos con los contenedores referentes a kafka y a PostgreSQL corriendo, podemos pasar a ejecutar las partes del proyecto.
 
-1. En primer lugar, ejcutamos el script producer. El objetivo de este script es generar los datos y enviarlos a un topic de Kafka llamado _generator_. Podemos ejecutar el script mediante el IDE que estemos utilizando o bien mediante consola. Para ello, nos situamos en la carpeta _src_ y ejecutamos:
+1. En primer lugar, ejcutamos el script _producer_. El objetivo de este script es generar los datos y enviarlos a un topic de Kafka llamado _generator_. Podemos ejecutar el script mediante el IDE que estemos utilizando o bien mediante consola. Para ello, nos situamos en la carpeta _src_ y ejecutamos:
 
 ```
 python producer.py
@@ -123,7 +123,7 @@ python producer.py
 Una vez que se encuentre bajo ejecución, observaremos un output similar al siguiente:
 ![img.png](images/datagenerator.png)
 
-2. En segundo lugar, ejecutaremos el script upload_raw_data.py, el cual leerá del topic _generator_, transformará los mensajes a formato tabular y los almacernará en la tabla _raw_data_.
+2. En segundo lugar, ejecutaremos el script _upload_raw_data.py_, el cual leerá del topic _generator_, transformará los mensajes a formato tabular y los almacenará en la tabla _raw_data_.
 
 3. Tras esto, podemos ejecutar el script _consumer.py_, el cual contiene toda la lógica para calcular los matches entre amigos. Lee los datos del topic _generator_, calcula los matches y transmite el resultado al topic _matches_
 
