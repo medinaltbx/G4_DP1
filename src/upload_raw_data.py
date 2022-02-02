@@ -38,7 +38,6 @@ def transform_raw(dc_data):
         df = pd.DataFrame(dc, index=[0])
         bbdd().upload_raw_data(df)
         print('Subida ok')
-        time.sleep(2)
 
 
 while True:
