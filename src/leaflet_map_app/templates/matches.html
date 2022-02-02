@@ -29,6 +29,26 @@
         attribution: '&copy; ' + mapLink + ' Contributors',
         maxZoom: 18,
     }).addTo(map);
+
+        L.Control.Watermark = L.Control.extend({
+        onAdd: function (map) {
+            var img = L.DomUtil.create('img');
+
+            img.src = 'https://github.com/Enriquebadenas/G4_DP1/blob/main/src/leaflet_map_app/white_logo.png?raw=true';
+            img.style.width = '300px';
+
+            return img;
+        },
+
+        onRemove: function (map) {
+            // Nothing to do here
+        }
+    });
+    L.control.watermark = function (opts) {
+        return new L.Control.Watermark(opts);
+    }
+    L.control.watermark({position: 'topright'}).addTo(map);
+
     var points_of_interest = {
         "Teatro": [39.47045516337841, -0.37450981743096007],
         "Bolera": [39.466418728388035, -0.40415652394254004],
@@ -36,13 +56,6 @@
         "Museo": [39.46598858281769, -0.3431144938225893]
     };
 
-    var logo = L.control({position: 'topright'});
-    logo.onAdd = function(map){
-        var div = L.DomUtil.create('div', 'myclass');
-        div.innerHTML= '<img width="100%" src="white_logo.png"/>';
-        return div;
-    }
-    logo.addTo(map);
 
     var localiztionLayer = new L.LayerGroup();
     var greenIcon = new L.Icon({

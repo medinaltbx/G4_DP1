@@ -26,7 +26,7 @@ G4_DP1/
 │  │  ├─ sql/
 │  │  │  ├─ create_tables.sql                
 │  │  ├─ docker-compose.yml
-│  ├─ kafka-zookp-docker/  #Contenedor kafka y zookeeper 
+│  ├─ docker-kafka-zookp/  #Contenedor kafka y zookeeper 
 ├─ images/
 │  ├─ Costes.xlsx
 ├─ src/

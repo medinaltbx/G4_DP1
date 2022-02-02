@@ -5,3 +5,6 @@ localhost:3000
 PRIMERA VEZ QUE NOS LOGUEAMOS
 user: admin
 password: admin
+
+https://www.techgeeknext.com/tools/docker/install-grafana-using-docker
+docker run -d --name=grafana -p 3000:3000 grafana/grafana
