@@ -158,7 +158,7 @@ Tenemos dos opciones de visualización:
 
 Para poder generar ambas vistas, es necesario completar los pasos previos de ejecución del proyecto. Ejecutamos el archivo indistintamente por consola o mediante el IDE:
 ```
-src/leaflet_map_app/src.py
+src/leaflet_map_app/app.py
 ```
 
 En este punto ambas páginas se encuentran operativas, y podemos acceder a ellas para observar la visualización en tiempo real con:
