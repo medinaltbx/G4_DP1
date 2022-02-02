@@ -168,7 +168,7 @@ http://127.0.0.1:5001/
 ```
 http://127.0.0.1:5001/matches
 ```
-![img.png](img.png)
+![img.png](images/matches_map.png)
 ### Grafana:
 1. Para correr grafana, en primer lugar debemos descargarnos la imagen:
 ````
