@@ -119,7 +119,7 @@ python producer.py
 Una vez que se encuentre bajo ejecución, observaremos un output similar al siguiente:
 ![img.png](images/datagenerator.png)
 
-2. En segundo lugar, ejecutaremos el script upload_raw_data.py, el cual leerá del topic _generator_, transformará los mensajes a formato tabular y los almacernará en la tabla _raw_data_.
+2. En segundo lugar, ejecutaremos el script _upload_raw_data.py_, el cual leerá del topic _generator_, transformará los mensajes a formato tabular y los almacenará en la tabla _raw_data_.
 
 3. Tras esto, podemos ejecutar el script _consumer.py_, el cual contiene toda la lógica para calcular los matches entre amigos. Lee los datos del topic _generator_, calcula los matches y transmite el resultado al topic _matches_
 
