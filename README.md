@@ -56,39 +56,43 @@ G4_DP1/
 ```console
 git clone https://github.com/Enriquebadenas/G4_DP1.git
 ```
-2. Nos dirigimos a la ruta donde se encuentre kafka-zookp-docker y ejecutamos:
+2. Abrimos el repositorio en el IDE que utilicemos (visual studio code, pycharm etc.) e instalamos las liberías necesarias:
+```
+pip install -r G4_DP1/requirements.txt
+```
+En caso de error, copiamos la ruta **absoluta** de requirements, en mi caso:
+```
+pip install -r  r'C:\Users\Cristian\Documents\repos\G4_DP1\requirements.txt'
+```
+### Kafka + Zookeper:
+1. Nos dirigimos a la ruta donde se encuentre kafka-zookp-docker :
+````
+cd docker/docker-kafka-zookp
+````
+2. Ejecutamos:
 ```
 docker-compose -f docker-compose-expose.yml up
 ```
 Si todo ha ido bien, deberás ver un output similar a este:
 ![img_1.png](images/zookeper_running.png)
 
-En este punto se encuentran corriendo tanto kafka como zookeper, por lo que solo es necesario instalar las dependencias de python recogidas en requirements.txt.
 
-3. Abrimos el repositorio en el IDE que utilicemos (visual studio code, pycharm etc.) e instalamos las liberías utilizando:
-```
-pip install -r G4_DP1/requirements.txt
-```
-Si no funciona, copiamos la ruta **absoluta** de requirements, en mi caso:
-```
-pip install -r  r'C:\Users\Cristian\Documents\repos\G4_DP1\requirements.txt'
-```
-4. A continuación se pueden ejecutar los scripts de producer.py y consumer.py de la carpeta src
 
 ### Conectar con base de datos:
 
-1. Nos dirigimos a la carpeta G4_DP1\docker\docker_postgres_with_data
+1. Nos dirigimos a la carpeta docker\docker_postgres_with_data
 ```
 cd G4_DP1\docker\docker_postgres_with_data
 ```
 
-2.Ejecutamos el siguiente comando para levantar el contenedor de base de datos: 
+2. Ejecutamos el siguiente comando para levantar el contenedor de base de datos: 
 ````
 docker-compose up
 ````
-El contenedor se inicializa automáticamente creando las dos tablas PostgreSQL, raw_data y matches.
+El contenedor se inicializa automáticamente creando las dos tablas PostgreSQL, raw_data y matches, indicado en ../sql/create_tables.sql:
 
-3.En este punto ya tenemos acceso desde la clase "bbdd" del script connection/db_postgres.py (Actualmente no cuenta con ninguna tabla, ver más adelante como crearla desde el inicio). Podemos comprobar su comportamiento accediendo al contenedor. Para ello, buscamos el id del contenedor:
+
+3. En este punto ya tenemos acceso desde la clase "bbdd" del script connection/db_postgres.py (Actualmente no cuenta con ninguna tabla, ver más adelante como crearla desde el inicio). Podemos comprobar su comportamiento accediendo al contenedor. Para ello, buscamos el id del contenedor:
 ````
 docker ps
 ````
@@ -96,7 +100,9 @@ docker ps
 ```
 docker exec -it 3id bin/bash
 ```
-5. Solo nos queda acceder a la base de datos ejecutando:
+También nos es posible acceder utilizando Docker Desktop:
+![img.png](images/docker_desktop.png)
+5. Finalmente accedemos a la base de datos ejecutando:
 ```
 psql -U root -d metaverso
 ```
