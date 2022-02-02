@@ -1,3 +1,5 @@
+![](images/readme_logo.jpg)
+
 Data Project 1 - Master Data Analytics EDEM
 
 Grupo 4 - Caso 1 - Metaverso
@@ -9,58 +11,52 @@ Equipo:
 - Hermán Redondo Lázaro
 - Galo Valle GarcÍa
 
-![logo.png](images/logopng.png)
 
+## Estructura del proyecto:
 ```bash
 G4_DP1/
-├─ connection/
-│  ├─ pycache__/
-│  ├─ index.js
-│  ├─ db_postgres.py
-│  ├─ docker-postgres.txt
-├─ docker/
-│  ├─ docker-grafana/  #Visualizaciones dashboard
-│  │  ├─ docker-compose.yml
-│  │  ├─ info.txt
-│  ├─ docker_postgres_with_data/  #Contenedor base de datos
-│  │  ├─ sql/
-│  │  │  ├─ create_tables.sql                
-│  │  ├─ docker-compose.yml
-│  ├─ docker-kafka-zookp/  #Contenedor kafka y zookeeper 
-├─ images/
-│  ├─ Costes.xlsx
-├─ src/
-│  ├─ leaflet_map_app/
-│  │  ├─ templates/
-│  │  │  ├─ index.html
-│  │  │  ├─ logo.png
-│  │  │  ├─ logo_con_fondo.png
-│  │  │  ├─ matches.html
-│  │  │  ├─ white_logo.png
-│  │  ├─ app.py  
-│  │  ├─ web_info
-│  │  ├─ white_logo.png
-│  ├─ consumer.py  #Lógica de matches
-│  ├─ producer.py  #Generador de datos
-│  ├─ upload_match.py #Capta matches, transforma y sube datos
-│  ├─ upload_raw_data.py #Transforma y almacena datos
-├─ testing/
-│  ├─ folium_tests/
-│  ├─ leaflet_test_1/
-│  ├─ Arquitectura v2.pptx
-├─ README.md
-├─ requirements.txt
+│   README.md
+│   requirements.txt
+│           
+├───connection                         # Información relacionada con la conexión a base de datos
+│       db_postgres.py                 # Script de conexión a PostgreSQL
+│       docker-postgres.txt            # Información interna de ejecución
+│       
+├───docker                             # Contenedores de docker necesarios
+│   ├───docker-grafana                 # Grafana
+│   ├───docker-kafka-zookp             # Kafka + Zookeper
+│   └───docker_postgres_with_data      # PostgreSQL
+│       └───sql
+│               create_tables.sql      # Instrucciones a ejecutar automáticamente durante la creación del contenedor
+│               
+├───images                             # Carpeta con imágenes utilizadas en el proyecto
+│       
+├───src                                # Código base del proyecto
+│   │   consumer.py                    # Consumidor de mensajes. Implementa lógica de matches
+│   │   producer.py                    # Generador de datos
+│   │   upload_match.py                # Transforma y sube los matches a base de datos
+│   │   upload_raw_data.py             # Transforma y sube los datos en crudo a base de datos
+│   │   
+│   └───leaflet_map_app         
+│       │   app.py                     # Código flask para la visualización de los mapas
+│       │   
+│       └───templates
+│               index.html             # Visualización de los datos en crudo (usuarios) en tiempo real
+│               matches.html           # Visualización de los matches en tiempo real
+│                
+└───testing                            # Scripts de prueba (innecesario)                   
+
 ```
 
 
-### Forma de uso del proyecto:
+## Prerrequisitos:
 
 
-1. Desde la consola, dirígete a la carpeta donde quieras clonar el repositorio y descárgalo:
+1. Desde la consola, nos dirigimos a la carpeta donde deseamos clonar el repositorio y lo descargamos:
 ```console
 git clone https://github.com/Enriquebadenas/G4_DP1.git
 ```
-2. Dirígete a la ruta donde se encuentre kafka-zookp-docker y ejecuta:
+2. Nos dirigimos a la ruta donde se encuentre kafka-zookp-docker y ejecutamos:
 ```
 docker-compose -f docker-compose-expose.yml up
 ```
@@ -73,9 +69,9 @@ En este punto se encuentran corriendo tanto kafka como zookeper, por lo que solo
 ```
 pip install -r G4_DP1/requirements.txt
 ```
-Si no funciona, copiad la ruta **absoluta** de requirements, en mi caso:
+Si no funciona, copiamos la ruta **absoluta** de requirements, en mi caso:
 ```
-pip install r'C:\Users\Cristian\Documents\repos\G4_DP1\requirements.txt'
+pip install -r  r'C:\Users\Cristian\Documents\repos\G4_DP1\requirements.txt'
 ```
 4. A continuación se pueden ejecutar los scripts de producer.py y consumer.py de la carpeta src
 
@@ -147,7 +143,7 @@ y abrir el navegador introduciendo la siguiente ruta:
 ```
 localhost:5001
 ```
-### Visualización web:
+#### Visualización web:
 Tenemos dos opciones de visualización: 
 * Visualización de usuarios activos.
 * Visualización de matches.
