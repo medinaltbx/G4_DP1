@@ -42,7 +42,7 @@ class bbdd:
             dc_types = {'id': INTEGER(),'name': VARCHAR(length=50),'last_name':VARCHAR(length=50),'f1': INTEGER(),'f2': INTEGER(),
                         'f3': INTEGER(),'f4': INTEGER(),'f5': INTEGER(),'f6': INTEGER(),'f7': INTEGER(),'f8': INTEGER(),'f9': INTEGER(),'f10': INTEGER(),
                         'lat':Float(precision=6, asdecimal=True),'lon':Float(precision=6, asdecimal=True),'transport':VARCHAR(length=50),'age':INTEGER(),
-                        'gender':VARCHAR(length=5),'weight':Float(precision=4, asdecimal=True),'height':Float(precision=4, asdecimal=True),'time':TIMESTAMP(0)
+                        'gender':VARCHAR(length=5),'weight':Float(precision=4, asdecimal=True),'height':Float(precision=4, asdecimal=True),'time':TIMESTAMP(4)
                         }
         except:
             pass

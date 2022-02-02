@@ -1,5 +1,4 @@
-docker run -d -p 3000:3000 --name grafana grafana/grafana-enterprise:8.2.0
-
+docker run -d --name=grafana -p 3000:3000 grafana/grafana
 localhost:3000
 
 PRIMERA VEZ QUE NOS LOGUEAMOS

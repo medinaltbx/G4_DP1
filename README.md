@@ -147,11 +147,32 @@ y abrir el navegador introduciendo la siguiente ruta:
 ```
 localhost:5001
 ```
+### Visualización web:
+Tenemos dos opciones de visualización: 
+* Visualización de usuarios activos.
+* Visualización de matches.
 
+Para poder generar ambas vistas, es necesario completar los pasos previos de ejecución del proyecto. Ejecutamos el archivo indistintamente por consola o mediante el IDE:
+```
+src/leaflet_map_app/src.py
+```
+
+En este punto ambas páginas se encuentran operativas, y podemos acceder a ellas para observar la visualización en tiempo real con:
+
+* Visualización de usuarios activos:
+```
+http://127.0.0.1:5001/
+```
+![img.png](images/usuarios_activos.png)
+* Visualización de matches:
+```
+http://127.0.0.1:5001/matches
+```
+![img.png](img.png)
 ### Grafana:
 1. Para correr grafana, en primer lugar debemos descargarnos la imagen:
 ````
-docker run -d -p 3000:3000 --name grafana grafana/grafana-enterprise:8.2.0
+docker run -d --name=grafana -p 3000:3000 grafana/grafana
 ````
 2. Una vez que el contenedor este corriendo, podemos acceder a grafana introduciendo en el navegador la siguiente ruta:
 ```
@@ -165,6 +186,7 @@ localhost:3000
 * User: grafana
 * Password: metaverso
 * TLS/SSL Mode: disable
+* Version: 10
 ![img.png](images/conexion_grafana.png)
 Presionamos en **Save & Test**. Si todo ha funcionado correctamente, veremos el siguiente mensaje:
 ![img.png](images/connection_ok.png)
