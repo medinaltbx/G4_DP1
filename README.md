@@ -1,4 +1,6 @@
-![](images/readme_logo.jpg)
+<p align="center">
+   <img src="https://github.com/Enriquebadenas/G4_DP1/blob/main/images/readme_logo.jpg?raw=true" alt="[YOUR_ALT]"/>
+</p>
 
 Data Project 1 - Master Data Analytics EDEM
 
