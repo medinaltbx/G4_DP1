@@ -13,6 +13,7 @@ Equipo:
 - Hermán Redondo Lázaro
 - Galo Valle GarcÍa
 
+![img.png](images/arquitectura.png)
 
 ## Estructura del proyecto:
 ```bash
